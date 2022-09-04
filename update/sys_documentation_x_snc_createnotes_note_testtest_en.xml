@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="testtest" label="test" language="en" table="x_snc_createnotes_note">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>testtest</element>
+            <help/>
+            <hint/>
+            <label>test</label>
+            <language>en</language>
+            <name>x_snc_createnotes_note</name>
+            <plural>tests</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2022-09-02 06:55:24</sys_created_on>
+            <sys_name>test</sys_name>
+            <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+            <sys_update_name>sys_documentation_x_snc_createnotes_note_testtest_en</sys_update_name>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
