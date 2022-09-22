@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_createnotes.my sample</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>my sample</name>
+        <script><![CDATA[// function onLoad() {
+//     // Use the 'getParameterValue' function below to get the parameter values from the URL   
+//     var sys_id = getParameterValue('sysparm_parent_sys_id');
+// 	var ownerBy;
+//     var ga = new GlideAjax('x_neci_swf_sp.ReferenceQualifierUtilsClient');
+//     ga.addParam('sysparm_name', 'checkValidAsset');
+// 	ga.addParam('sysparm_service', sys_id);
+// 	ga.addParam('sysparm_model', 'Cloud Build and Test on Azure');
+// 	ga.getXML(setAssetValues);
+
+//     function setAssetValues(response) {
+//         var data = response.responseXML.documentElement.getAttribute("answer");
+// 		data = JSON.parse(data);
+// 		if (data.checkFlg === 'true') {
+// 			g_form.setValue('unchange_budget_approver_flag', 'Yes');
+// 			g_form.setValue('asset', data.asset);
+//             g_form.setReadOnly('asset', true);
+//             g_form.getReference('asset', setValues);
+//         }
+//     }
+
+//     function setValues(asset) {
+// 		g_form.setValue('unchange_project_flag', 'Yes');
+//         g_form.setValue('project', asset.project);
+//         g_form.setReadOnly('project', true);
+// 		ownerBy = asset.owned_by_department;
+// 		g_form.getReference('project', setProjectValues);
+//     }
+	
+// 	function setProjectValues(project) {
+// 		g_form.setValue('approver', project.approver);
+// 		var gb = new GlideAjax('x_neci_swf_sp.ManagedDepartmentUtils');
+// 		gb.addParam('sysparm_name','isBudgetApproverExist');
+// 		gb.addParam('sysparm_managed_department', ownerBy);
+// 		gb.addParam('sysparm_budget_Approver', project.budget_approver);
+// 		gb.getXML(setBudgeAapprover);
+// 	}
+// 	function setBudgeAapprover(response) {
+// 		var budgeAapprover = response.responseXML.documentElement.getAttribute("answer");
+// 		if (budgeAapprover != '') {
+// 			g_form.setValue('budget_approver', budgeAapprover);
+// 		}
+// 	}
+// }
+
+// function getParameterValue(name) {
+//     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+//     var regexS = "[\\?&]" + name + "=([^&#]*)";
+//     var regex = new RegExp(regexS);
+//     var results = regex.exec(this.location);
+//     if (results == null) {
+//         return "";
+//     } else {
+//         return unescape(results[1]);
+//     }
+// }
+
+// -------------------
+// var ReferenceQualifierUtilsClient = Class.create();
+// ReferenceQualifierUtilsClient.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+//     type: 'ReferenceQualifierUtilsClient',
+//     checkValidProject: function() {
+//         // get the project sys_id
+//         var projectSysId = this.getParameter('sysparm_project');
+
+//         var projectGr = new GlideRecord('x_neci_swf_sp_project');
+//         projectGr.get(projectSysId);
+//         // if project is not valid
+//         if (!projectGr.isValidRecord()) {
+//             return false;
+//         }
+//         // check if user has write access to the project
+//         if (!projectGr.canWrite()) {
+//             return false;
+//         }
+//         // check if the project is active
+//         if (!(projectGr.getValue('project_status') == 'active')) {
+//             return false;
+//         }
+//         // get the catalog item sys_id
+//         var catItemSysId = this.getParameter('sysparm_cat_item');
+
+//         var catItemGr = new GlideRecord('sc_cat_item');
+//         catItemGr.get(catItemSysId);
+//         // if hide quantity flag is set as true in catalog item then it is singleton
+//         if (catItemGr.no_quantity_v2 == false) {
+//             return true;
+//         }
+		
+// 		// necas add (for update project init projectID)
+// 		if (catItemGr.model == '') {
+// 			return true;
+// 		}
+
+//         // 1. Check if project has an asset for a singleton catalog item
+//         var assetGr = new GlideRecord('x_neci_swf_sp_alm_swf_asset');
+// 		// NECAS added start
+// 		if (catItemGr.model != '') {
+// 			assetGr.addQuery('model', catItemGr.model.sys_id); 
+// 		} else {
+// 			assetGr.addQuery('requested_item.cat_item', catItemSysId);
+// 		}
+// 		// NECAS added end
+// 		assetGr.addQuery('install_status', 1);
+//         assetGr.addQuery('project', projectSysId);
+//         assetGr.query();
+//         if (assetGr.getRowCount() > 0) {
+//             return false;
+//         }
+		
+//         // get 'project' variable from 'project_details' variable set
+//         var itemOptionGr = new GlideRecord('item_option_new');
+		
+// 		// NECAS add start
+// 		// if (catItemGr.sys_name == 'Code Verification' || catItemGr.sys_name == 'CloudSDE' || catItemGr.sys_name == 'Build and Test Environment') {
+// 		if (catItemGr.model.name == 'Code Verification' || catItemGr.model.name == 'CloudSDE' || catItemGr.model.name == 'Build and Test Environment') {
+// 			itemOptionGr.addQuery('variable_set.internal_name', 'project_details');
+// 		} else {
+// 			itemOptionGr.addQuery('variable_set.internal_name', 'project_set');
+// 		}
+// 		// NECAS add end
+        
+//         itemOptionGr.addQuery('name', 'project');
+// 		itemOptionGr.addQuery('sys_scope.name', 'swf-sp');
+//         itemOptionGr.query();
+// 		itemOptionGr.next();
+// 		//get project variable sys_id
+//         var projectCatalogVariableSysId = itemOptionGr.getUniqueValue();
+
+//         // 2. Check if project has an asset requested for a
+//         // singleton catalog item
+//         var reqItemGr = new GlideRecord('sc_req_item');
+//         reqItemGr.addQuery('cat_item', catItemSysId);
+//         reqItemGr.addActiveQuery();
+//         reqItemGr.addQuery('variables.' + projectCatalogVariableSysId, projectSysId);
+//         reqItemGr.query();
+//         if (reqItemGr.getRowCount() > 0) {
+//             return false;
+//         }
+
+//         return true;
+//     },
+//     checkValidAsset: function() {
+//         // get the assetSysId
+// 		//modify by NECAS Start(#1303)
+// 		var configuration = {};
+// 		var serviceId = this.getParameter('sysparm_service');
+// 		if (serviceId == ''){
+// 			configuration.checkFlg = false + '';
+// 			return JSON.stringify(configuration);
+// 		}
+// 		var serviceGr = new GlideRecord('x_neci_swf_sp_cmdb_ci_swf_services');
+// 		serviceGr.get(serviceId);
+//         //var assetSysId = this.getParameter('sysparm_asset');
+// 		var assetSysId = serviceGr.getValue('asset');
+// 		//modify by NECAS End(#1303)
+//         // get the assetGr
+//         var assetGr = new GlideRecord('x_neci_swf_sp_alm_swf_asset');
+//         assetGr.get(assetSysId);
+//         // return false if not a valid record
+//         if (!assetGr.isValidRecord()) {
+// 			//modify by NECAS Start(#1303)
+//             //return false;
+// 			configuration.checkFlg = false + '';  
+// 			return JSON.stringify(configuration); 
+// 			//modify by NECAS End(#1303)
+//         }
+//         // check if asset is Not In use
+//         if (assetGr.getValue('install_status') == 7) { // NECAS MODIFY
+// 			//modify by NECAS Start(#1303)
+//             //return false;
+// 			configuration.checkFlg = false + '';
+// 			return JSON.stringify(configuration);
+// 			//modify by NECAS End(#1303)
+//         }
+//         // check if the model is correct
+//         if (assetGr.getElement('model.name') != this.getParameter('sysparm_model')) {
+// 			//modify by NECAS Start(#1303)
+//             //return false;
+// 			configuration.checkFlg = false + '';
+// 			return JSON.stringify(configuration);
+// 			//modify by NECAS End(#1303)
+//         }
+// 		//modify by NECAS Start(#1303)
+//         //return true;
+// 		configuration.checkFlg = true + '';
+// 		configuration.asset = assetSysId + '';
+// 		return JSON.stringify(configuration);
+// 		//modify by NECAS End(#1303)
+//     },
+// 	//add by necas start
+// 	projectIdExistCheck: function(){
+// 		// get the projecId
+// 		var projectId = this.getParameter('sysparm_projectId');
+// 		// get the projectRecord
+//         var projectGr = new GlideRecord('x_neci_swf_sp_project');
+//         projectGr.addQuery('number', projectId);
+// 		projectGr.addQuery('project_status', 'active');
+// 		projectGr.setWorkflow(false);
+//         projectGr.query();
+		
+// 		var existFlag = false;
+// 		var configuration = {};
+// 		if (projectGr.getRowCount() > 0){
+// 			projectGr.next();
+// 			existFlag = true;
+// 			// set project variable sys_id
+// 			configuration.projectSysId = projectGr.getUniqueValue() + '';
+// 		}
+// 		configuration.existFlag = existFlag + '';
+//         return JSON.stringify(configuration);
+// 	},
+// 	getSwfServiceDeskGroupMail: function(){
+// 		var groupGr = new GlideRecord('sys_user_group');
+// 		groupGr.addQuery('name', 'SWF Service Desk');
+// 		groupGr.query();
+// 		groupGr.next();
+// 		var configuration = {};
+// 		configuration.groupMail = groupGr.getValue('email') + '';
+// 		return JSON.stringify(configuration);
+// 	},
+// 	getSupervisorMail: function(){
+// 		var managedbyId = this.getParameter('sysparm_managedbyId');
+// 		var departmentGr = new GlideRecord('x_neci_swf_sp_managed_department');
+// 		departmentGr.get(managedbyId);
+// 		var configuration = {};
+// 		configuration.supervisorMail = departmentGr.getDisplayValue('supervisor_email') + '';
+
+// 		var supervisorsList = [];
+// 		var supervisors = departmentGr.getValue('supervisors');
+// 		if (supervisors != null) {
+// 			supervisorsList = supervisorsList.concat(supervisors);
+// 		}
+// 		var supervisorGroups = departmentGr.getValue('supervisor_groups');
+// 		if (supervisorGroups != null) {
+// 			var supervisorGrmembers = [];
+// 			var gr = new GlideRecord('sys_user_grmember');
+// 			gr.addQuery('group', 'IN', supervisorGroups);
+// 			gr.query();
+// 			while (gr.next()) {
+// 				supervisorGrmembers.push(gr.user.toString());
+// 			}
+// 			supervisorsList = supervisorsList.concat(supervisorGrmembers);
+// 		}
+// 		configuration.supervisorsList = supervisorsList.toString();
+
+// 		return JSON.stringify(configuration);
+// 	},
+// 	getInboundAccessControlData: function(){
+// 		var projectId = this.getParameter('sysparm_project');
+// 		var configuration = {};
+// 		var VMSecGr1 = new GlideRecord('x_neci_swf_sp_vm_security_rule');
+// 		VMSecGr1.addQuery('project', projectId);
+// 		VMSecGr1.addQuery('type', 'Basic Set');
+// 		VMSecGr1.addQuery('direction', 'inbound');
+// 		VMSecGr1.addQuery('active', true);
+// 		VMSecGr1.query();
+// 		if (VMSecGr1.getRowCount() > 0){
+// 			VMSecGr1.next();
+// 			configuration.bs_ip_address_list = VMSecGr1.getValue('ip_address_list') + '';
+// 			configuration.bs_port_list = VMSecGr1.getValue('port_list') + '';
+// 		}
+		
+// 		var VMSecGr2 = new GlideRecord('x_neci_swf_sp_vm_security_rule');
+// 		VMSecGr2.addQuery('project', projectId);
+// 		VMSecGr2.addQuery('type', 'Other');
+// 		VMSecGr2.addQuery('direction', 'inbound');
+// 		VMSecGr2.addQuery('active', true);
+// 		VMSecGr2.orderBy('number');
+// 		VMSecGr2.query();
+// 		var RulesList = [];
+// 		while (VMSecGr2.next()){
+// 			RulesList.push({
+// 				'rules_sys_id': VMSecGr2.getUniqueValue(),
+// 				'rules_name': VMSecGr2.getValue('name'),
+// 				'rules_description': VMSecGr2.getValue('description'),
+// 				'rules_ip_address_list': VMSecGr2.getValue('ip_address_list'),
+// 				'rules_port_list': VMSecGr2.getValue('port_list'),
+// 				'rules_protocol_list': VMSecGr2.getValue('protocol_list'),
+// 				'rules_hosts': VMSecGr2.getValue('vm_list')
+// 			});
+// 		}
+// 		configuration.other_rules = JSON.stringify(RulesList) + '';
+// 		return JSON.stringify(configuration);
+// 	},
+	
+// 	getOutboundAccessControlData: function(){
+// 		var projectId = this.getParameter('sysparm_project');
+// 		var configuration = {};
+
+// 		var VMSecGr = new GlideRecord('x_neci_swf_sp_vm_security_rule');
+// 		VMSecGr.addQuery('project', projectId);
+// 		VMSecGr.addQuery('type', 'Other');
+// 		VMSecGr.addQuery('direction', 'outbound');
+// 		VMSecGr.addQuery('active', true);
+// 		VMSecGr.orderBy('number');
+// 		VMSecGr.query();
+// 		var RulesList = [];
+// 		while (VMSecGr.next()){
+// 			RulesList.push({
+// 				'rules_sys_id': VMSecGr.getUniqueValue(),
+// 				'rules_name': VMSecGr.getValue('name'),
+// 				'rules_description': VMSecGr.getValue('description'),
+// 				'rules_ip_address_list': VMSecGr.getValue('ip_address_list'),
+// 				'rules_port_list': VMSecGr.getValue('port_list'),
+// 				'rules_protocol_list': VMSecGr.getValue('protocol_list'),
+// 				'rules_hosts': VMSecGr.getValue('vm_list')
+// 			});
+// 		}
+// 		configuration.access_rules = JSON.stringify(RulesList) + '';
+// 		return JSON.stringify(configuration);
+// 	},
+	
+// 	getBackupHistoryData: function(){
+// 		//get asset variable sys_id
+// 		var assetId = this.getParameter('sysparm_asset');
+// 		var serviceGr = new GlideRecord('x_neci_swf_sp_cmdb_ci_swf_services');
+// 		serviceGr.addQuery('asset', assetId);
+// 		serviceGr.query();
+// 		serviceGr.next();
+		
+// 		var configuration = {};
+// 		var bkGr = new GlideRecord('x_neci_swf_sp_vm_backup');
+// 		bkGr.addQuery('target', serviceGr.getUniqueValue());
+// 		bkGr.addQuery('is_active', 'true');
+// 		bkGr.query();
+// 		var backupDataArr = [];
+// 		while (bkGr.next()) {
+// 			var started_at = bkGr.getValue('started_at');
+// 			var backup_name = bkGr.getValue('backup_name');
+// 			var date = new GlideDateTime(started_at);
+// 			var newTime = date.getLocalDate().getByFormat('yyyy/MM/dd') + " " + date.getLocalTime().getByFormat('HH:mm');
+// 			var fmtBackupData = newTime + '  ' + backup_name;
+// 			backupDataArr.push(fmtBackupData);
+// 		}
+// 		var backupHistoryStr1 = '';
+// 		var backupHistoryStr2 = '';
+// 		if (backupDataArr.length > 0) {
+// 			backupDataArr.sort();
+// 			var count = 0;
+// 			if (backupDataArr.length > 3){
+// 				count = backupDataArr.length - 3;
+// 			}
+// 			for(var i = backupDataArr.length - 1; i > count; i--){
+// 				backupHistoryStr1 += backupDataArr[i] + "\n";
+// 				backupHistoryStr2 += backupDataArr[i] + ",";
+// 			}
+// 			backupHistoryStr1 = backupHistoryStr1 + backupDataArr[count];
+// 			backupHistoryStr2 = backupHistoryStr2 + backupDataArr[count];
+// 		}
+// 		configuration.backup_history = backupHistoryStr1;
+// 		configuration.backup_data_info = backupHistoryStr2;
+// 		return JSON.stringify(configuration);
+// 	},
+	
+// 	getBackupName: function(){
+// 		var projectName = this.getParameter('sysparm_pjName');
+// 		var configuration = {};
+// 		var nowDate = new GlideDateTime();
+// 		//var arrDate = [];
+// 		//arrDate = nowDate.toString().split(' ');
+// 		//var yymmdd = arrDate[0].replace(/\-/g, "");
+// 		//var hhmmss = arrDate[1].replace(/\:/g, "");
+// 		var yymmdd = nowDate.getLocalDate().toString().replace(/\-/g, "");
+// 		var hhmmss = nowDate.getLocalTime().getByFormat('HH:mm:ss').replace(/\:/g, "");
+// 		var backupName = projectName + '_' + yymmdd + '_' + hhmmss;
+// 		configuration.backup_name = backupName;
+// 		return JSON.stringify(configuration);
+// 	},
+	
+// 	backupNameExistCheck: function(){
+// 		var assetId = this.getParameter('sysparm_assetId');
+// 		var serviceGr = new GlideRecord('x_neci_swf_sp_cmdb_ci_swf_services');
+// 		serviceGr.addQuery('asset', assetId);
+// 		serviceGr.query();
+// 		serviceGr.next();
+		
+// 		var backupName = this.getParameter('sysparm_backupName');
+// 		var configuration = {};
+// 		var vmBackupGr = new GlideRecord('x_neci_swf_sp_vm_backup');
+// 		vmBackupGr.addQuery('target', serviceGr.getUniqueValue());
+// 		vmBackupGr.addQuery('backup_name', backupName);
+// 		vmBackupGr.query();
+// 		if (vmBackupGr.getRowCount() > 0){
+// 			configuration.checkFlg = true + '';
+// 		}
+// 		return JSON.stringify(configuration);
+// 	},
+	
+// 	customerProjectIdCheck: function(){
+// 		// get the projecId
+// 		var projectId = this.getParameter('sysparm_projectId');
+// 		// get the projectRecord
+//         var projectGr = new GlideRecord('x_neci_swf_sp_project');
+//         projectGr.addQuery('number', projectId);
+// 		projectGr.addQuery('project_status', 'active');
+// 		projectGr.setWorkflow(false);
+//         projectGr.query();
+// 		var existFlag = false;
+// 		var configuration = {};
+// 		if (projectGr.getRowCount() > 0){
+// 			projectGr.next();
+// 			var managedBy = projectGr.getValue('managed_by');
+// 			if (managedBy != null) {
+// 				var deptGr = new GlideRecord('x_neci_swf_sp_managed_department');
+// 				deptGr.get(managedBy);
+// 				if (deptGr.getValue('company') != null){
+// 					existFlag = true;
+// 				}
+// 			}
+// 		}
+// 		configuration.existFlag = existFlag + '';
+//         return JSON.stringify(configuration);
+// 	},
+	
+// 	getManagedDepartmentValue: function(){
+// 		var deptId = this.getParameter('sysparm_deptId');
+// 		var deptGr = new GlideRecord('x_neci_swf_sp_managed_department');
+// 		deptGr.get(deptId);
+// 		var configuration = {
+// 			'base_department': '',
+// 			'supervisors': '',
+// 			'promoters': '',
+// 			'readonly_supervisors': '',
+// 			'budget_approvers': '',
+// 			'broadcast_for_swf_incident': '',
+// 			'broadcast_for_pj_incident': '',
+// 			'budget_approver_condition': '',
+// 			'budget_approver_violation_rule': '',
+// 			'initial_budget_approvers_webinfosys': '',
+// 			'default_charge_code': ''
+// 		};
+// 		if (deptGr.getValue('base_department') != null){
+// 			configuration.base_department = deptGr.getValue('base_department') + '';
+// 		}
+// 		if (deptGr.getValue('supervisors') != null){
+// 			configuration.supervisors = deptGr.getValue('supervisors') + '';
+// 		}
+// 		if (deptGr.getValue('promoters') != null){
+// 			configuration.promoters = deptGr.getValue('promoters') + '';
+// 		}
+// 		if (deptGr.getValue('readonly_supervisors') != null){
+// 			configuration.readonly_supervisors = deptGr.getValue('readonly_supervisors') + '';
+// 		}
+// 		if (deptGr.getValue('budget_approvers') != null){
+// 			configuration.budget_approvers = deptGr.getValue('budget_approvers') + '';
+// 		}
+// 		// add by necas start(#1428)
+// 		if (deptGr.getValue('budget_approver_groups') != null){
+// 			configuration.budget_approver_groups = deptGr.getValue('budget_approver_groups') + '';
+// 		}
+// 		// add by necas end(#1428)
+// 		configuration.regard_all_managers_as_budget_approvers = deptGr.getValue('regard_all_managers_as_budget_approvers') + '';
+// 		if (deptGr.getValue('supervisor_email') != null){
+// 			configuration.broadcast_for_swf_incident = deptGr.getValue('supervisor_email') + '';
+// 		}
+// 		if (deptGr.getValue('supervisor_email_for_pjmp') != null){
+// 			configuration.broadcast_for_pj_incident = deptGr.getValue('supervisor_email_for_pjmp') + '';
+// 		}
+// 		if (deptGr.getValue('budget_approver_condition') != null){
+// 			configuration.budget_approver_condition = deptGr.getValue('budget_approver_condition') + '';
+// 		}
+// 		if (deptGr.getValue('budget_approver_violation_rule') != null){
+// 			configuration.budget_approver_violation_rule = deptGr.getValue('budget_approver_violation_rule') + '';
+// 		}
+// 		if (deptGr.getValue('initial_budget_approvers_webinfosys') != null){
+// 			configuration.initial_budget_approvers_webinfosys = deptGr.getValue('initial_budget_approvers_webinfosys') + '';
+// 		}
+// 		// add by necas start(#1445)
+// 		if (deptGr.getValue('remark') != null){
+// 			configuration.remark = deptGr.getValue('remark') + '';
+// 		}
+// 		// add by necas end(#1445)
+// 		if (deptGr.getValue('default_charge_code') != null){
+// 			configuration.default_charge_code = deptGr.getValue('default_charge_code') + '';
+// 		}
+// 		configuration.same_owner = deptGr.getValue('same_owner') + '';
+// 		configuration.fix_charge_code = deptGr.getValue('fix_charge_code') + '';
+// 		configuration.login_uid = gs.getUserID();
+// 		// Add by NECAS Start(#1666)
+// 		configuration.has_mgd_dept_role = gs.hasRole('x_neci_swf_sp.managed_department_admin');
+// 		// Add by NECAS End(#1666)
+// 		// target managed department check
+// 		var baseDeptFlg = false;
+// 		//var gdt = new GlideDateTime();
+// 		//gdt.addWeeksLocalTime(-2);
+// 		var targetDeptGr = new GlideRecord('x_neci_swf_sp_managed_department');
+// 		targetDeptGr.addQuery('base_department', deptId);
+// 		//targetDeptGr.addQuery('active', true);
+// 		//targetDeptGr.addQuery('retired', '').addOrCondition('retired', '>', gdt.getLocalDate());
+// 		targetDeptGr.query();
+// 		if (targetDeptGr.getRowCount() > 0) {
+// 			baseDeptFlg = true;
+// 		}
+// 		configuration.baseDeptFlg = baseDeptFlg + '';
+// 		return JSON.stringify(configuration);
+// 	},
+// 	//add by necas end
+	
+// 	//add by NES start
+// 	getSupervisorMailForPjmp: function(){
+// 		var managedId = this.getParameter('sysparm_managedbyId');
+// 		var depGr = new GlideRecord('x_neci_swf_sp_managed_department');
+// 		depGr.get(managedId);
+// 		var configuration = {};
+// 		//add by necas start
+// // 		configuration.supervisorMailForPjmp = depGr.getDisplayValue('supervisor_email_for_pjmp') + '';
+// 		var supervisorMailForPjmp = depGr.getDisplayValue('supervisor_email_for_pjmp') + '';
+// 		if (supervisorMailForPjmp == "") {
+// 			supervisorMailForPjmp = depGr.getDisplayValue('supervisor_email') + '';
+// 		}
+// 		configuration.supervisorMailForPjmp = supervisorMailForPjmp;
+// 		//add by necas end
+// 		//add by necas start
+// 		var supervisorsList = [];
+// 		var supervisors = depGr.getValue('supervisors');
+// 		if (supervisors != null) {
+// 			supervisorsList = supervisorsList.concat(supervisors);
+// 		}
+// 		var supervisorGroups = depGr.getValue('supervisor_groups');
+// 		if (supervisorGroups != null) {
+// 			var supervisorGrmembers = [];
+// 			var gr = new GlideRecord('sys_user_grmember');
+// 			gr.addQuery('group', 'IN', supervisorGroups);
+// 			gr.query();
+// 			while (gr.next()) {
+// 				supervisorGrmembers.push(gr.user.toString());
+// 			}
+// 			supervisorsList = supervisorsList.concat(supervisorGrmembers);
+// 		}
+// 		configuration.supervisorsList = supervisorsList.toString();
+// 		//add by necas end
+// 		return JSON.stringify(configuration);
+// 	},
+// 	//add by NES end
+	
+// 	//add by NECAS start(#1680)
+// 	getTemplateInfo: function() {
+// 		var templateOsId = this.getParameter('sysparm_template_os');
+// 		var templateGr = new GlideRecord('x_neci_swf_sp_template');
+// 		templateGr.get(templateOsId);
+// 		var configuration = {};
+// 		configuration.vm_cpu_count = templateGr.getValue('num_of_cpu') + '';
+// 		configuration.vm_memory = templateGr.getValue('memory_size') + '';
+// 		configuration.vm_disk = templateGr.getValue('disk_size') + '';
+// 		return JSON.stringify(configuration);
+// 	},
+// 	getPJTemplateInfo: function() {
+// 		var pjTemplateId = this.getParameter('sysparm_pj_template');
+// 		var pjTemplateGr = new GlideRecord('x_neci_swf_sp_template_for_pj');
+// 		pjTemplateGr.get(pjTemplateId);
+// 		var configuration = {};
+// 		configuration.cloud_sde_cpu = pjTemplateGr.getValue('num_of_cpu') + '';
+// 		configuration.cloud_sde_memory = pjTemplateGr.getValue('memory_size') + '';
+// 		configuration.cloud_sde_disk = pjTemplateGr.getValue('disk_size') + '';
+// 		return JSON.stringify(configuration);
+// 	},
+// 	getUsableTemplate: function() {
+// 		var templateGr = new GlideRecord('x_neci_swf_sp_template');
+// 		templateGr.addQuery('vm_type', 'Container');
+// 		templateGr.addQuery('swf_version', 'STARTSWITH', '4');
+// 		templateGr.addQuery('dept_id', 'SWF');
+// 		templateGr.query();
+// 		templateGr.next();
+// 		var configuration = {};
+// 		configuration.value_of_template = templateGr.getValue('template_name') + '';
+// 		return JSON.stringify(configuration);
+// 	},
+// 	//add by NECAS end(#1680)
+	
+// 	//add by NECAS start
+// 	putProjectToSession: function() {
+//         // get the project sys_id
+//         var projectSysId = this.getParameter('sysparm_project');
+// 		var session = gs.getSession();
+// 		session.putClientData('project', projectSysId);
+// 	},
+// 	//add by NECAS end
+// 	//add by NECAS start(#1743)
+// 	getCloudSDETemplatePrice: function () {
+// 		var overseas_users = this.getParameter('overseas_users');
+// 		var connect_from_external = this.getParameter('connect_from_external');
+// 		var template_name = this.getParameter('template_name');
+// 		var display_name = this.getParameter('display_name');
+// 		var configuration = {};
+// 		if (overseas_users == 'yes' || connect_from_external == 'yes') {
+// 			if (template_name.indexOf('w10') != -1) {
+// 				if (display_name.indexOf('.NET') != -1) {
+// 					configuration.template_price = 'w10_other_VS';
+// 				} else {
+// 					configuration.template_price = 'w10_other';
+// 				}
+// 			} else {
+// 				if (display_name.indexOf('.NET') != -1) {
+// 					configuration.template_price = 'w7_other_VS';
+// 				} else {
+// 					configuration.template_price = 'w7_other';
+// 				}
+// 			}
+// 		} else {
+// 			if (template_name.indexOf('w10') != -1) {
+// 				if (display_name.indexOf('.NET') != -1) {
+// 					configuration.template_price = 'w10_EA_VS';
+// 				} else {
+// 					configuration.template_price = 'w10_EA';
+// 				}
+// 			} else {
+// 				if (display_name.indexOf('.NET') != -1) {
+// 					configuration.template_price = 'w7_EA_VS';
+// 				} else {
+// 					configuration.template_price = 'w7_EA';
+// 				}
+// 			}
+// 		}
+// 		return JSON.stringify(configuration);
+// 	},
+// 	//add by NECAS end(#1743)
+// });
+
+
+
+
+
+
+
+
+
+
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-16 12:22:12</sys_created_on>
+        <sys_id>d0d7575897c61110621cb4b3f153aff6</sys_id>
+        <sys_name>my sample</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sys_script_include_d0d7575897c61110621cb4b3f153aff6</sys_update_name>
+    </sys_script_include>
+</record_update>

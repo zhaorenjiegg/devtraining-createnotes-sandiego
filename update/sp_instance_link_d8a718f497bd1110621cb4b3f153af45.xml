@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance_link">
+    <sp_instance_link action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>primary</color>
+        <css/>
+        <glyph>usd</glyph>
+        <id/>
+        <kb_article/>
+        <kb_category/>
+        <kb_topic/>
+        <order>1</order>
+        <roles/>
+        <sc_cat_item/>
+        <sc_category/>
+        <short_description>Browse the catalog for services and items available to you</short_description>
+        <size>md</size>
+        <sp_column display_value="1">55d650f497bd1110621cb4b3f153af55</sp_column>
+        <sp_page display_value="sc_home">fe87a11147132100ba13a5554ee490b9</sp_page>
+        <sp_widget display_value="Icon Link">3caa67afcb13020000f8d856634c9c2e</sp_widget>
+        <sys_class_name>sp_instance_link</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-05 01:22:46</sys_created_on>
+        <sys_id>d8a718f497bd1110621cb4b3f153af45</sys_id>
+        <sys_name>Order Something</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sp_instance_link_d8a718f497bd1110621cb4b3f153af45</sys_update_name>
+        <title>Order Something</title>
+        <type>page</type>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"link_template": {
+		"value": "Top Icon",
+		"displayValue": "Top Icon"
+	}
+}]]></widget_parameters>
+    </sp_instance_link>
+    <sys_translated_text action="delete_multiple" query="documentkey=d8a718f497bd1110621cb4b3f153af45"/>
+</record_update>

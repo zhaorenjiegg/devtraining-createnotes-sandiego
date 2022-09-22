@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>sc</category>
+        <client_script><![CDATA[function($scope, $location) {
+	var c = this;
+	/*=============== Begin link handling ===============*/
+	$scope.onClick = function($event, item) {
+		var lp = getLinkParts(item);
+		if (typeof lp == "string")
+			return; // can't intercept/redirect external content item
+		
+		$event.stopPropagation();
+		$event.preventDefault();
+		var evt = {item: item, search: lp};
+
+		// This will let a wrapper widget intercept and redirect somewhere else
+		$scope.$emit($scope.options.click_event_name, evt);
+	};
+
+	function getLinkParts(item) {
+		if (item.sys_class_name == 'sc_cat_item_content' && item.content_type == 'external')
+			return item.url;
+
+		return {id: item.page, sys_id: item.sys_id};
+	}
+
+	$scope.getItemHREF = function(item) {
+		var lp = getLinkParts(item);
+		if (typeof lp == "string")
+			return lp;
+
+		return "?id=" + lp.id + "&sys_id=" + lp.sys_id;
+	}
+
+	var unregister = $rootScope.$on($scope.options.click_event_name, function($event, o) {
+		if ("url" in o)
+			$location.href = o.url;
+		else
+			$location.search(o.search);
+	});
+
+	$scope.$on("$destroy", function() {
+		unregister();
+	});
+	/*=============== End link handling ===============*/
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>@media (min-width: 768px) {
+  .item-card-column {
+    -ms-flex: 0 0 50%;
+    -moz-box-flex: 0 0 50%;
+    -moz-flex: 0 0 50%;
+    -webkit-box-flex: 0 0 50%;;
+    -webkit-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .item-card-column {
+    -ms-flex: 0 0 33.33333%;
+    -moz-box-flex: 0 0 33.33333%;
+    -moz-flex: 0 0 33.33333%;
+    -webkit-box-flex: 0 0 33.33333%;;
+    -webkit-flex: 0 0 33.33333%;
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+    width: 33.33333%;
+  }
+}
+
+.item-card {
+  height: 100%
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs display_value="Catalog Content">04bdcb60d731120023c84f80de6103b3</docs>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Copy of Catalog Content</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	var cat = $sp.getParameter('sc_catalog');
+	if (!cat)
+		cat = $sp.getValue("sc_catalog");  // portal catalog
+	var gr = new GlideRecord('sc_catalog');
+	gr.get(cat);
+	data.cat = cat;
+	data.title = gr.getDisplayValue("title");
+	data.categories = getCategories(cat);
+	data.items = getItems(cat);
+	data.sc_category_page = $sp.getDisplayValue("sc_category_page") || "sc_category";
+	addItemsToCategories(data.categories, data.items);
+
+	function getItems(cat) {
+		var gr = new GlideRecord('sc_cat_item');
+		gr.addQuery('sc_catalogs', cat);
+		gr.addQuery('sys_class_name', 'NOT IN', 'sc_cat_item_wizard');
+		gr.addEncodedQuery('hide_sp=false^ORhide_spISEMPTY');
+		gr.addActiveQuery();
+		gr.orderBy('order');
+		gr.orderBy('name');
+		gr.query();
+		var items = [];
+		while (gr.next()) {
+			var catalogItemJS = new sn_sc.CatItem(gr.getUniqueValue() + '');
+			
+			if (!catalogItemJS.canView())
+						continue;
+			
+			var catItemDetails = catalogItemJS.getItemSummary();
+
+			var item = {};
+			item.name = catItemDetails.name;
+			item.short_description = catItemDetails.short_description;
+			item.picture = catItemDetails.picture;
+			item.price = catItemDetails.price;
+			item.sys_id = catItemDetails.sys_id;
+			item.hasPrice = catItemDetails.show_price;
+			item.type = catItemDetails.type;
+			item.order = catItemDetails.order;
+			item.category = catItemDetails.category.sys_id;
+			item.sys_class_name = catItemDetails.sys_class_name;
+			
+			item.page = 'sc_cat_item';
+			
+			if (item.type == 'order_guide') {
+				item.page = 'sc_cat_item_guide';
+			} else if (item.type == 'content_item') {
+				item.content_type = catItemDetails.content_type;
+				item.url = catItemDetails.url;
+				if (item.content_type == 'kb') {
+					item.kb_article = catItemDetails.kb_article;
+					item.page = 'kb_article';
+					item.sys_id = item.kb_article;
+				} else if (item.content_type == 'external') {
+					item.target = '_blank';
+				}
+			}
+			items[catItemDetails.sys_id] = item;
+		}
+		return items;
+	}
+
+	function getCategories(cat) {
+		var gr = new GlideRecord('sc_category');
+		gr.addQuery('sc_catalog', cat);
+		gr.addActiveQuery();
+		gr.addQuery("sys_class_name", "sc_category");
+		gr.orderBy('title');
+		gr.query();
+		var cats = [];
+		while (gr.next()) {
+			var categoryJS = new sn_sc.CatCategory(gr.getUniqueValue() + '');
+			if (!categoryJS.canView())
+				continue;
+
+			var c = {};
+			$sp.getRecordValues(c,gr,'sys_id,title,parent');
+			cats.push(c);
+		}
+		return cats;
+	}
+
+	function addItemsToCategories(cats, itemDetails) {
+		cats.forEach(function(cat) {
+			cat.items = [];
+			var itemIDs = [];
+			itemIDs = new sn_sc.CatCategory(cat.sys_id + '').getItemIds();
+			itemIDs.forEach(function(itemID) {
+				if (itemDetails[itemID])
+					cat.items.push(itemDetails[itemID]);
+			});
+		});
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-15 08:49:04</sys_created_on>
+        <sys_id>c3ad518097461110621cb4b3f153af54</sys_id>
+        <sys_name>Copy of Catalog Content</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sp_widget_c3ad518097461110621cb4b3f153af54</sys_update_name>
+        <template><![CDATA[<div ng-repeat="c in ::data.categories" ng-if="::c.items.length">
+  <div class="h4"><a ng-href="?id={{::data.sc_category_page}}&sys_id={{::c.sys_id}}">{{::c.title}}</a></div>
+  <ul class="row item-list-style-type-none item-card-row" role="list" aria-label="{{::c.title}} ${items}">
+    <li class="item-card-column" ng-repeat="item in ::c.items" role="listitem">
+      <div class="panel item-card panel-{{::options.color}} b">
+        <a target="{{::item.target}}" ng-href="{{::getItemHREF(item)}}" ng-click="onClick($event, item)" class="panel-body block height-100">
+          <div>
+            <div class="h4 m-t-none m-b-xs text-overflow-ellipsis" style="padding-bottom:1px">{{::item.name}}<span ng-if="item.content_type == 'external'" class="text-primary"><span class="sr-only">${External Link}</span> ➚</span></div>
+            <img ng-src="{{::item.picture}}" ng-if="::item.picture" alt="" class="m-r-sm m-b-sm item-image pull-left" aria-hidden="true"/>
+            <div class="text-muted item-short-desc catalog-text-wrap">{{::item.short_description}}</div>
+          </div>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>]]></template>
+    </sp_widget>
+</record_update>

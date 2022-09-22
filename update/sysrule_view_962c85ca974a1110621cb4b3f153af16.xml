@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysrule_view">
+    <sysrule_view action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <advanced>false</advanced>
+        <condition/>
+        <description/>
+        <device_type>browser</device_type>
+        <match_conditions>ALL</match_conditions>
+        <name>myview</name>
+        <order>100</order>
+        <overrides_user_preference>true</overrides_user_preference>
+        <script><![CDATA[(function overrideView(view, is_list) {
+
+	// Add your code here
+	answer = null;  // set the new view to answer
+
+})(view, is_list);]]></script>
+        <sys_class_name>sysrule_view</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-21 12:41:52</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>962c85ca974a1110621cb4b3f153af16</sys_id>
+        <sys_name>myview</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sysrule_view_962c85ca974a1110621cb4b3f153af16</sys_update_name>
+        <table>x_snc_createnotes_myparent</table>
+        <view>myview</view>
+    </sysrule_view>
+</record_update>

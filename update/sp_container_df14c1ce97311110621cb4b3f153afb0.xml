@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+    <sp_container action="INSERT_OR_UPDATE">
+        <background_color/>
+        <background_image/>
+        <background_style>default</background_style>
+        <bootstrap_alt>false</bootstrap_alt>
+        <class_name/>
+        <container_class_name/>
+        <name>Copy of test01 - Container 2</name>
+        <order>2</order>
+        <sp_page display_value="copy_of_test">9f14c1ce97311110621cb4b3f153afa8</sp_page>
+        <subheader>false</subheader>
+        <sys_class_name>sp_container</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-09 01:49:33</sys_created_on>
+        <sys_id>df14c1ce97311110621cb4b3f153afb0</sys_id>
+        <sys_name>Copy of test01 - Container 2</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sp_container_df14c1ce97311110621cb4b3f153afb0</sys_update_name>
+        <title/>
+        <width>container</width>
+    </sp_container>
+</record_update>

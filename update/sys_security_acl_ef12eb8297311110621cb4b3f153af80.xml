@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <condition/>
+        <description>Default access control on x_snc_createnotes_myparent</description>
+        <name>x_snc_createnotes_myparent</name>
+        <operation display_value="write">write</operation>
+        <script/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-09 13:19:53</sys_created_on>
+        <sys_id>ef12eb8297311110621cb4b3f153af80</sys_id>
+        <sys_name>x_snc_createnotes_myparent</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sys_security_acl_ef12eb8297311110621cb4b3f153af80</sys_update_name>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

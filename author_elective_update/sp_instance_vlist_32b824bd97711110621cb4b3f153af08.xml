@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance_vlist">
+    <sp_instance_vlist action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <display_field>short_description</display_field>
+        <field_list/>
+        <filter/>
+        <glyph/>
+        <id/>
+        <maximum_entries>5</maximum_entries>
+        <order>1</order>
+        <order_by/>
+        <order_direction>asc</order_direction>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">98b8e0bd97711110621cb4b3f153af64</sp_column>
+        <sp_page display_value="ticket">84af292247132100ba13a5554ee4909e</sp_page>
+        <sp_widget display_value="Simple List">5b255672cb03020000f8d856634c9c28</sp_widget>
+        <sys_class_name>sp_instance_vlist</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-08 05:11:25</sys_created_on>
+        <sys_id>32b824bd97711110621cb4b3f153af08</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sp_instance_vlist_32b824bd97711110621cb4b3f153af08</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-09-08 05:12:11</sys_updated_on>
+        <table>incident</table>
+        <title/>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"always_show": {
+		"value": "",
+		"displayValue": ""
+	},
+	"panel_body_height": {
+		"value": "",
+		"displayValue": ""
+	},
+	"image_field": {
+		"value": "",
+		"displayValue": ""
+	},
+	"secondary_fields": {
+		"value": "",
+		"displayValue": ""
+	},
+	"rounded_images": {
+		"value": "",
+		"displayValue": ""
+	},
+	"list_page": {
+		"value": "3c2c9063cb11020000f8d856634c9c1f",
+		"displayValue": "404"
+	},
+	"hide_footer": {
+		"value": "",
+		"displayValue": ""
+	},
+	"view": {
+		"value": "",
+		"displayValue": ""
+	},
+	"disable_record_watcher": {
+		"value": "",
+		"displayValue": ""
+	},
+	"filter_acls": {
+		"value": "false",
+		"displayValue": "false"
+	}
+}]]></widget_parameters>
+    </sp_instance_vlist>
+    <sys_translated_text action="DELETE" query="documentkey=32b824bd97711110621cb4b3f153af08"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</application>
+        <file_path/>
+        <instance_id>e46431f9db9bf38849eac59705961979</instance_id>
+        <instance_name>dev91972</instance_name>
+        <name>sp_instance_vlist_32b824bd97711110621cb4b3f153af08</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_instance_vlist"&gt;&lt;sp_instance_vlist action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;class_name/&gt;&lt;color&gt;default&lt;/color&gt;&lt;css/&gt;&lt;display_field&gt;short_description&lt;/display_field&gt;&lt;field_list/&gt;&lt;filter/&gt;&lt;glyph/&gt;&lt;id/&gt;&lt;maximum_entries&gt;5&lt;/maximum_entries&gt;&lt;order&gt;1&lt;/order&gt;&lt;order_by/&gt;&lt;order_direction&gt;asc&lt;/order_direction&gt;&lt;roles/&gt;&lt;short_description/&gt;&lt;size&gt;md&lt;/size&gt;&lt;sp_column display_value="1"&gt;98b8e0bd97711110621cb4b3f153af64&lt;/sp_column&gt;&lt;sp_page display_value="ticket"&gt;84af292247132100ba13a5554ee4909e&lt;/sp_page&gt;&lt;sp_widget display_value="Simple List"&gt;5b255672cb03020000f8d856634c9c28&lt;/sp_widget&gt;&lt;sys_class_name&gt;sp_instance_vlist&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-09-08 05:11:25&lt;/sys_created_on&gt;&lt;sys_id&gt;32b824bd97711110621cb4b3f153af08&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="CreateNotes" source="x_snc_createnotes"&gt;df5fd9a5090232007f44e1046c8ff69f&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="CreateNotes"&gt;df5fd9a5090232007f44e1046c8ff69f&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_instance_vlist_32b824bd97711110621cb4b3f153af08&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-09-08 05:12:11&lt;/sys_updated_on&gt;&lt;table&gt;incident&lt;/table&gt;&lt;title/&gt;&lt;url/&gt;&lt;widget_parameters&gt;&lt;![CDATA[{
+	"always_show": {
+		"value": "",
+		"displayValue": ""
+	},
+	"panel_body_height": {
+		"value": "",
+		"displayValue": ""
+	},
+	"image_field": {
+		"value": "",
+		"displayValue": ""
+	},
+	"secondary_fields": {
+		"value": "",
+		"displayValue": ""
+	},
+	"rounded_images": {
+		"value": "",
+		"displayValue": ""
+	},
+	"list_page": {
+		"value": "3c2c9063cb11020000f8d856634c9c1f",
+		"displayValue": "404"
+	},
+	"hide_footer": {
+		"value": "",
+		"displayValue": ""
+	},
+	"view": {
+		"value": "",
+		"displayValue": ""
+	},
+	"disable_record_watcher": {
+		"value": "",
+		"displayValue": ""
+	},
+	"filter_acls": {
+		"value": "false",
+		"displayValue": "false"
+	}
+}]]&gt;&lt;/widget_parameters&gt;&lt;/sp_instance_vlist&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=32b824bd97711110621cb4b3f153af08"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>326428534</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>d50c78f397a91110621cb4b3f153af41</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-08 05:12:11</sys_created_on>
+        <sys_id>8ee828bd97711110621cb4b3f153afc1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1831b8346830000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-09-08 05:12:11</sys_updated_on>
+        <type>Instance of Simple List</type>
+        <update_guid>86e828bdc37111108ccb4efa813c0ac1</update_guid>
+        <update_guid_history>86e828bdc37111108ccb4efa813c0ac1:326428534,f2b824bd3e71111012eeaf1a61acfa09:-1920217875</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">c0d478bd97711110621cb4b3f153afda</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-08 06:04:13</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance_vlist">sp_instance_vlist</sys_db_object>
+        <sys_id>3d621f3524d446f0a6ebc58348bff100</sys_id>
+        <sys_metadata>32b824bd97711110621cb4b3f153af08</sys_metadata>
+        <sys_name/>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_scope_delete display_value="">64daa03572704d49a928bf08a985d6f9</sys_scope_delete>
+        <sys_update_name>sp_instance_vlist_32b824bd97711110621cb4b3f153af08</sys_update_name>
+        <sys_update_version display_value="sp_instance_vlist_32b824bd97711110621cb4b3f153af08">8ee828bd97711110621cb4b3f153afc1</sys_update_version>
+    </sys_metadata_delete>
+</record_update>

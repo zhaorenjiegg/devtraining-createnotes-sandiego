@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance_table">
+    <sp_instance_table action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <display_field/>
+        <field_list/>
+        <filter table="x_snc_createnotes_myparent">number=javascript:testCondito()<item endquery="false" field="number" goto="false" newquery="false" operator="=" or="false" value="javascript:testCondito()"/>
+        </filter>
+        <glyph/>
+        <id/>
+        <maximum_entries>5</maximum_entries>
+        <order>2</order>
+        <order_by/>
+        <order_direction>asc</order_direction>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">25d4f0bd97711110621cb4b3f153affd</sp_column>
+        <sp_page display_value="test02">475f11d497021110621cb4b3f153afda</sp_page>
+        <sp_widget display_value="zhao Data Table from Instance Definit">4d88069c97821110621cb4b3f153afaa</sp_widget>
+        <sys_class_name>sp_instance_table</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-16 06:37:13</sys_created_on>
+        <sys_id>2d198e9c97821110621cb4b3f153afe1</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sp_instance_table_2d198e9c97821110621cb4b3f153afe1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-09-17 03:13:12</sys_updated_on>
+        <table>x_snc_createnotes_myparent</table>
+        <title/>
+        <url/>
+        <widget_parameters/>
+    </sp_instance_table>
+    <sys_translated_text action="DELETE" query="documentkey=2d198e9c97821110621cb4b3f153afe1"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</application>
+        <file_path/>
+        <instance_id>e46431f9db9bf38849eac59705961979</instance_id>
+        <instance_name>dev91972</instance_name>
+        <name>sp_instance_table_2d198e9c97821110621cb4b3f153afe1</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance_table"><sp_instance_table action="INSERT_OR_UPDATE"><active>true</active><class_name/><color>default</color><css/><display_field/><field_list/><filter table="x_snc_createnotes_myparent">number=javascript:testCondito()<item endquery="false" field="number" goto="false" newquery="false" operator="=" or="false" value="javascript:testCondito()"/></filter><glyph/><id/><maximum_entries>5</maximum_entries><order>2</order><order_by/><order_direction>asc</order_direction><roles/><short_description/><size>md</size><sp_column display_value="1">25d4f0bd97711110621cb4b3f153affd</sp_column><sp_page display_value="test02">475f11d497021110621cb4b3f153afda</sp_page><sp_widget display_value="zhao Data Table from Instance Definit">4d88069c97821110621cb4b3f153afaa</sp_widget><sys_class_name>sp_instance_table</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-09-16 06:37:13</sys_created_on><sys_id>2d198e9c97821110621cb4b3f153afe1</sys_id><sys_mod_count>3</sys_mod_count><sys_name/><sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package><sys_policy/><sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope><sys_update_name>sp_instance_table_2d198e9c97821110621cb4b3f153afe1</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-09-17 03:13:12</sys_updated_on><table>x_snc_createnotes_myparent</table><title/><url/><widget_parameters/></sp_instance_table><sys_translated_text action="delete_multiple" query="documentkey=2d198e9c97821110621cb4b3f153afe1"/></record_update>]]></payload>
+        <payload_hash>-486040689</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>d50c78f397a91110621cb4b3f153af41</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-17 03:13:12</sys_created_on>
+        <sys_id>f2f36aa097021110621cb4b3f153afc8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>183496f94130000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-09-17 03:13:12</sys_updated_on>
+        <type>Instance with Table</type>
+        <update_guid>faf36aa0940211102ac63655f4d837c7</update_guid>
+        <update_guid_history>faf36aa0940211102ac63655f4d837c7:-486040689,f1f26e600d021110bfac0308ff1bf13f:-681352209,4729ce5c4b8211107614c162c2405442:-1960901065,61198e9c4c8211108ed79d5cf7f606e4:917221698</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">b5056ee097021110621cb4b3f153af8c</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-17 03:17:47</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance_table">sp_instance_table</sys_db_object>
+        <sys_id>4c16de5446e44d38ae14ccb5e5921110</sys_id>
+        <sys_metadata>2d198e9c97821110621cb4b3f153afe1</sys_metadata>
+        <sys_name/>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_scope_delete display_value="">64daa03572704d49a928bf08a985d6f9</sys_scope_delete>
+        <sys_update_name>sp_instance_table_2d198e9c97821110621cb4b3f153afe1</sys_update_name>
+        <sys_update_version display_value="sp_instance_table_2d198e9c97821110621cb4b3f153afe1">f2f36aa097021110621cb4b3f153afc8</sys_update_version>
+    </sys_metadata_delete>
+</record_update>

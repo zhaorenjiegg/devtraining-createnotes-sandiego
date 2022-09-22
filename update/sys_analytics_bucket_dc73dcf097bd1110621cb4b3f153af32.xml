@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_analytics_bucket">
+    <sys_analytics_bucket action="INSERT_OR_UPDATE">
+        <analytics_channel display_value="web">6496ef61c7001010393d265c95c260b9</analytics_channel>
+        <application_name>Portal Meum</application_name>
+        <bucket_document_id>a292d0f097bd1110621cb4b3f153afdb</bucket_document_id>
+        <bucket_metadata/>
+        <bucket_table_name>sp_portal</bucket_table_name>
+        <bucket_type>service_portal</bucket_type>
+        <enable_unauthenticated_user_tracking>false</enable_unauthenticated_user_tracking>
+        <enabled>true</enabled>
+        <internal_name_for_index>x_snc_createnotes.sp_portal.a292d0f097bd1110621cb4b3f153afdb</internal_name_for_index>
+        <sys_class_name>sys_analytics_bucket</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-05 01:04:29</sys_created_on>
+        <sys_id>dc73dcf097bd1110621cb4b3f153af32</sys_id>
+        <sys_name>Portal Meum</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sys_analytics_bucket_dc73dcf097bd1110621cb4b3f153af32</sys_update_name>
+    </sys_analytics_bucket>
+</record_update>

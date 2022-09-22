@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_dictionary_override">
+    <sys_dictionary_override action="INSERT_OR_UPDATE">
+        <attributes/>
+        <attributes_override>false</attributes_override>
+        <base_table>task</base_table>
+        <calculation/>
+        <calculation_override>false</calculation_override>
+        <default_value/>
+        <default_value_override>false</default_value_override>
+        <dependent/>
+        <dependent_override>false</dependent_override>
+        <display_override>false</display_override>
+        <element>description</element>
+        <mandatory>false</mandatory>
+        <mandatory_override>false</mandatory_override>
+        <name>x_snc_createnotes_myparent</name>
+        <read_only>false</read_only>
+        <read_only_override>true</read_only_override>
+        <reference_qual/>
+        <reference_qual_override>false</reference_qual_override>
+        <sys_class_name>sys_dictionary_override</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-16 06:31:29</sys_created_on>
+        <sys_id>25c70a5c97821110621cb4b3f153af6d</sys_id>
+        <sys_name>description</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sys_dictionary_override_25c70a5c97821110621cb4b3f153af6d</sys_update_name>
+    </sys_dictionary_override>
+</record_update>

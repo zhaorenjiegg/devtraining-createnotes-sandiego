@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance_link">
+    <sp_instance_link action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>primary</color>
+        <css/>
+        <glyph>eye</glyph>
+        <id/>
+        <kb_article/>
+        <kb_category display_value="Policies">5a7b2552ff0131009b20ffffffffffb1</kb_category>
+        <kb_topic/>
+        <order>1</order>
+        <roles/>
+        <sc_cat_item/>
+        <sc_category/>
+        <short_description>Look for answers to your questions about corporate processes and policies</short_description>
+        <size>md</size>
+        <sp_column display_value="2">1dd614f497bd1110621cb4b3f153afbd</sp_column>
+        <sp_page display_value="kb_category">0e461a2147132100ba13a5554ee4900e</sp_page>
+        <sp_widget display_value="Icon Link">3caa67afcb13020000f8d856634c9c2e</sp_widget>
+        <sys_class_name>sp_instance_link</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-05 01:22:52</sys_created_on>
+        <sys_id>21a718f497bd1110621cb4b3f153af15</sys_id>
+        <sys_name>Knowledge Base</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sp_instance_link_21a718f497bd1110621cb4b3f153af15</sys_update_name>
+        <title>Knowledge Base</title>
+        <type>kb_category</type>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"link_template": {
+		"value": "Color Box",
+		"displayValue": "Color Box"
+	}
+}]]></widget_parameters>
+    </sp_instance_link>
+    <sys_translated_text action="delete_multiple" query="documentkey=21a718f497bd1110621cb4b3f153af15"/>
+</record_update>

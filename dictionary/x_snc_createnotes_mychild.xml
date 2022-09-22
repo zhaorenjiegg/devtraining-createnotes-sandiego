@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="71d4eb4697311110621cb4b3f153af7c" extends="x_snc_createnotes_myparent" label="mychild" max_length="40" name="x_snc_createnotes_mychild" type="collection">
+        <element attributes="can_group=true" label="Oya" max_length="32" name="oya" reference="x_snc_createnotes_myparent" type="reference"/>
+        <element label="客先提示" max_length="40" name="u_customer_presentation" type="string"/>
+        <element label="売上配分" max_length="40" name="u_sales_distribution" type="string"/>
+    </element>
+</database>

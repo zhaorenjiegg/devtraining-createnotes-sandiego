@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role_contains">
+    <sys_user_role_contains action="INSERT_OR_UPDATE">
+        <contains display_value="report_admin" name="report_admin">fdc4e4540a0a0b8e0136581790249b7a</contains>
+        <role display_value="x_snc_createnotes.manager" name="x_snc_createnotes.manager">b07c913897b15110621cb4b3f153af02</role>
+        <sys_class_name>sys_user_role_contains</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-05 06:27:52</sys_created_on>
+        <sys_id>e97d517897b15110621cb4b3f153af3f</sys_id>
+        <sys_name>report_admin.x_snc_createnotes.manager</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sys_user_role_contains_e97d517897b15110621cb4b3f153af3f</sys_update_name>
+    </sys_user_role_contains>
+</record_update>

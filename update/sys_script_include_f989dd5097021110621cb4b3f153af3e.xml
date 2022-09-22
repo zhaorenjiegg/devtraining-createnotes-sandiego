@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_createnotes.testCondito</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>testCondito</name>
+        <script><![CDATA[function testCondito() {
+    var name = 'sys_id';
+    var regexS = "[\\?&]" + name + "=([^&#]*)";
+    var regex = new RegExp(regexS);
+    var results = regex.exec(gs.action.getGlideURI().toString());
+    if (results == null) {
+        return "";
+    } else {
+        return unescape(results[1]);
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-16 03:11:44</sys_created_on>
+        <sys_id>f989dd5097021110621cb4b3f153af3e</sys_id>
+        <sys_name>testCondito</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sys_script_include_f989dd5097021110621cb4b3f153af3e</sys_update_name>
+    </sys_script_include>
+</record_update>

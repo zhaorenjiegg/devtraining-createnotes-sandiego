@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="26c1670297311110621cb4b3f153af3a" extends="task" label="myparent" max_length="40" name="x_snc_createnotes_myparent" type="collection">
+        <element label="leader" max_length="32" name="leader" reference="sys_user" type="reference"/>
+        <element label="Member" max_length="32" name="member" reference="sys_user" type="reference"/>
+        <element label="parent name" max_length="40" name="parent_name" type="string"/>
+    </element>
+</database>

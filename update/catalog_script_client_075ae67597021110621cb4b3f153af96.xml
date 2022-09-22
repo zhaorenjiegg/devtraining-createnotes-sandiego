@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="catalog_script_client">
+    <catalog_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_catalog>true</applies_catalog>
+        <applies_extended>false</applies_extended>
+        <applies_req_item>false</applies_req_item>
+        <applies_sc_task>false</applies_sc_task>
+        <applies_target_record>false</applies_target_record>
+        <applies_to>item</applies_to>
+        <cat_item display_value="mychield_recp3">b25a2e7197021110621cb4b3f153af06</cat_item>
+        <cat_variable/>
+        <condition/>
+        <description/>
+        <field/>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>test</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+
+    //     var sys_id = getParameterValue('sysparm_parent_sys_id');
+//     var sys_id = "ec06ef8697311110621cb4b3f153af77";
+	var sys_id = getParameterValue('sysparam_id');
+    var ga = new GlideAjax('PopulateClientField');
+    ga.addParam('sysparm_name', 'getFields');
+    ga.addParam('sysparm_sys_id', sys_id);
+    ga.getXML(setFieldValues);
+
+    function setFieldValues(response) {
+        var data = response.responseXML.documentElement.getAttribute("answer");
+        data = JSON.parse(data);
+		alert(data.number);
+		alert(data.parent.member.user_id);
+        g_form.setValue('number', data.number );
+		g_form.setValue('member', data.parent.member.user_id,data.parent.member.user_name );
+		g_form.setValue('leader', data.parent.leader.user_id,data.parent.leader.user_name );
+    }
+}
+function getParameterValue(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regexS = "[\\?&]" + name + "=([^&#]*)";
+    var regex = new RegExp(regexS);
+    var results = regex.exec(this.location);
+    if (results == null) {
+        return "";
+    } else {
+        return unescape(results[1]);
+    }
+}
+
+
+//     function setAssetValues(response) {
+//         var data = response.responseXML.documentElement.getAttribute("answer");
+// 		data = JSON.parse(data);
+// 		if (data.checkFlg === 'true') {
+// 			g_form.setValue('unchange_budget_approver_flag', 'Yes');
+// 			g_form.setValue('asset', data.asset);
+//             g_form.setReadOnly('asset', true);
+//             g_form.getReference('asset', setValues);
+//         }
+//     }
+
+//     function setValues(asset) {
+// 		g_form.setValue('unchange_project_flag', 'Yes');
+//         g_form.setValue('project', asset.project);
+//         g_form.setReadOnly('project', true);
+// 		ownerBy = asset.owned_by_department;
+// 		g_form.getReference('project', setProjectValues);
+//     }
+	
+// 	function setProjectValues(project) {
+// 		g_form.setValue('approver', project.approver);
+// 		var gb = new GlideAjax('x_neci_swf_sp.ManagedDepartmentUtils');
+// 		gb.addParam('sysparm_name','isBudgetApproverExist');
+// 		gb.addParam('sysparm_managed_department', ownerBy);
+// 		gb.addParam('sysparm_budget_Approver', project.budget_approver);
+// 		gb.getXML(setBudgeAapprover);
+// 	}
+// 	function setBudgeAapprover(response) {
+// 		var budgeAapprover = response.responseXML.documentElement.getAttribute("answer");
+// 		if (budgeAapprover != '') {
+// 			g_form.setValue('budget_approver', budgeAapprover);
+// 		}
+// 	}
+
+
+// function getParameterValue(name) {
+//     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+//     var regexS = "[\\?&]" + name + "=([^&#]*)";
+//     var regex = new RegExp(regexS);
+//     var results = regex.exec(this.location);
+//     if (results == null) {
+//         return "";
+//     } else {
+//         return unescape(results[1]);
+//     }
+// }]]></script>
+        <sys_class_name>catalog_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-21 00:53:29</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>075ae67597021110621cb4b3f153af96</sys_id>
+        <sys_name>test</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>catalog_script_client_075ae67597021110621cb4b3f153af96</sys_update_name>
+        <table/>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <variable_set/>
+        <view/>
+    </catalog_script_client>
+</record_update>

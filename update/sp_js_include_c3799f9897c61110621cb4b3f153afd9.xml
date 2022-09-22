@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_js_include">
+    <sp_js_include action="INSERT_OR_UPDATE">
+        <display_name>mytest</display_name>
+        <source>local</source>
+        <sys_class_name>sp_js_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-16 12:29:30</sys_created_on>
+        <sys_id>c3799f9897c61110621cb4b3f153afd9</sys_id>
+        <sys_name>mytest</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_ui_script/>
+        <sys_update_name>sp_js_include_c3799f9897c61110621cb4b3f153afd9</sys_update_name>
+        <url/>
+    </sp_js_include>
+</record_update>
